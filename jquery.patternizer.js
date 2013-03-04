@@ -130,6 +130,8 @@
 			svgPattern,
 			svgPatternValue,
 			svgImage,
+			svgImageOffsetX,
+			svgImageOffsetY,
 			helperImage,
 			textWidth,
 			textHeight,
@@ -184,7 +186,9 @@
 			svgImage = $(document.createElementNS(NS.svg, "image"));
 			svgImage[0].setAttributeNS(NS.xlink, "xlink:href", svgPatternValue); 
 			
-			svgImage.attr("x", "0").attr("y", "0");
+			svgImageOffsetX = block.data("offsetx") || 0;
+			svgImageOffsetY = block.data("offsety") || 0;
+			svgImage.attr("x", "" + (svgImageOffsetX + settings.offsetX)).attr("y", "" + (svgImageOffsetY + settings.offsetY));
 
 			svgPattern.append(svgImage);
 			
@@ -230,9 +234,13 @@
 		initBlocksUpdater();
 	}
 
+    var settings = { offsetX: 0, offsetY: 0 };
+
 	var methods = {
 		init: function (options) {
 			elements = $(this);
+
+			settings = $.extend(settings, options || {});
 
 			if (isSVGNativeSupported()) {
 				createBlocks();

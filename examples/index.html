@@ -19,14 +19,30 @@
 				margin: 0 0 1em;
 				font-size: 1.1em;
 			}
+			hgroup div {
+				width:505px;
+				display:inline-block;
+			}
 			.heading {
-				width: auto;
-				font-size: 20em;
-				line-height: 1.3em;
+				font-size: 10em;
+				line-height: 0.5;
 				font-weight: normal;
+			}
+			.background {
+				display:inline-block;
+				background:url('timessquare.jpg');
+				margin:0;
+				padding:20px;
+			}
+			#see-thru {
+				background:white;
+				opacity:0.6;
 			}
 			.arial {
 				font-family: arial;
+			}
+			.hidden {
+				visibility: hidden;
 			}
 		</style>
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -35,13 +51,23 @@
 	<body>
 		<p class="para">Example of simulating "<a href="http://webkit.org/blog/164/background-clip-text/">-webkit-background-clip: text</a>" property — resize, copy, search, etc.</p>
 		<div class="arial">
-			<h2 class="heading"><span class="background-clip" data-pattern="Igreja_de_Campanha_Azulejo_4.jpg">Pattern</span></h2>
+			<hgroup>
+				<div class="background">
+					<h2 id="see-thru" class="heading">
+						<span class="background-clip" data-pattern="timessquare.jpg" data-offsetx="-20" data-offsety="30">Pattern</span>
+					</h2>
+					<h2 id="pattern" class="heading">
+						<span class="background-clip" data-pattern="Igreja_de_Campanha_Azulejo_4.jpg">Pattern</span>
+					</h2>
+				</div>
+			</hgroup>
 			<p class="para">A <a href="http://en.wikipedia.org/wiki/Pattern"><span class="background-clip" data-pattern="Igreja_de_Campanha_Azulejo_4__small.jpg">pattern</span></a>, from the French patron, is a type of theme of recurring events or objects, sometimes referred to as elements of a set of objects.</p>
 			<p class="para">The elements of a <span class="background-clip" data-pattern="Igreja_de_Campanha_Azulejo_4__small.jpg">pattern</span> repeat in a predictable manner. <span class="background-clip" data-pattern="Igreja_de_Campanha_Azulejo_4__small.jpg">Patterns</span> can be based on a template or model which generates <span class="background-clip" data-pattern="Igreja_de_Campanha_Azulejo_4__small.jpg">pattern</span> elements, especially if the elements have enough in common for the underlying pattern to be inferred, in which case the things are said to exhibit the unique <span class="background-clip" data-pattern="Igreja_de_Campanha_Azulejo_4__small.jpg">pattern</span>. There are many different <span class="background-clip" data-pattern="Igreja_de_Campanha_Azulejo_4__small.jpg">patterns</span> in the world.</p>
 		</div>
 		<script>
 			jQuery(function ($) {
 				$(".background-clip").patternizer();
+				$("#pattern").show();
 			});
 		</script>
 	</body>
